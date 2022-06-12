@@ -1,0 +1,79 @@
+[
+    {
+        "name": "circuits"
+    },
+    {
+        "name": "races",
+        "time_columns": [
+            "time"
+        ],
+        "date_columns": [
+            "date"
+        ]
+    },
+    {
+        "name": "drivers",
+        "date_columns": [
+            "dob"
+        ]
+    },
+    {
+        "name": "driver_standings"
+    },
+    {
+        "name": "constructors",
+        "drop_columns": [
+            ""
+        ]
+    },
+    {
+        "name": "status"
+    },
+    {
+        "name": "results",
+        "time_columns": [
+            "time",
+            "fastestlaptime"
+        ],
+        "delete_record": [
+            {
+                "column_search": "resultid",
+                "value": "23769",
+                "column_to_delete": "fastestlapspeed"
+            }
+        ]
+    },
+    {
+        "name": "constructor_standings",
+        "drop_columns": [
+            ""
+        ]
+    },
+    {
+        "name": "constructor_results"
+    },
+    {
+        "name": "laptimes",
+        "time_columns": [
+            "time"
+        ]
+    },
+    {
+        "name": "pitstops",
+        "time_columns": [
+            "time",
+            "duration"
+        ]
+    },
+    {
+        "name": "qualifying",
+        "time_columns": [
+            "q1",
+            "q2",
+            "q3"
+        ]
+    },
+    {
+        "name": "seasons"
+    }
+]

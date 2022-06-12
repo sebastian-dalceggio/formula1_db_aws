@@ -2,5 +2,10 @@ terraform/terraform.tfstate
 terraform/terraform.tfstate.backup
 terraform/.terraform.lock.hcl
 terraform/.terraform/
-terraform/keys.tf
-data/.env
+terraform/load_data.zip
+terraform/roles.tf
+load_data/classes/__pycache__
+api/classes/__pycache__
+out.txt
+.gitignore
+help.txt
