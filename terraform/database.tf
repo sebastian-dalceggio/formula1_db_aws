@@ -1,9 +1,9 @@
-resource "aws_db_subnet_group" "database-subnet-group" {
-  name        = "database subnets"
-  subnet_ids  = [aws_subnet.private-subnet-az1.id, aws_subnet.private-subnet-az2.id]
-  description = "Subnet for Database Instance"
+resource "aws_db_subnet_group" "private_subnets_group" {
+  name        = "private_subnets"
+  subnet_ids  = aws_subnet.private_subnets[*].id
+  description = "Private subnets group"
   tags = {
-    "Name" = "Database Subnets"
+    Name = "Private subnets"
   }
 }
 
@@ -13,8 +13,8 @@ resource "aws_db_instance" "postgresdb" {
   engine                 = var.db_engine
   engine_version         = "12.7"
   skip_final_snapshot    = true
-  availability_zone      = var.availability_zone_1
-  db_subnet_group_name   = aws_db_subnet_group.database-subnet-group.name
+  availability_zone      = var.availability_zones[0]
+  db_subnet_group_name   = aws_db_subnet_group.private_subnets_group.name
   vpc_security_group_ids = [aws_security_group.database-security-group.id]
   db_name                = var.db_name
   username               = var.db_username

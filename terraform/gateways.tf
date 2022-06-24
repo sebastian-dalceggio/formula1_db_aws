@@ -1,6 +1,6 @@
-resource "aws_internet_gateway" "gw-main" {
-  vpc_id = aws_vpc.vpc-main.id
+resource "aws_internet_gateway" "gw_main" {
+  vpc_id = aws_vpc.vpc_main.id
   tags = {
-    Name = "gw-main"
+    Name = "Main gateway"
   }
 }

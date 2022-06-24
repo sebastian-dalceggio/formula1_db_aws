@@ -4,16 +4,16 @@ resource "aws_lambda_function" "create_tables" {
   timeout      = 300
   vpc_config {
     security_group_ids = ["${aws_security_group.lambda-security-group.id}"]
-    subnet_ids         = [aws_subnet.private-subnet-az1.id, aws_subnet.private-subnet-az2.id]
+    subnet_ids         = aws_subnet.private_subnets[*].id
   }
   function_name = "create_tables"
   role          = var.lab_role
   memory_size   = 2048
   environment {
     variables = {
-      "TARGET_DB" = "${var.db_engine_sqlalchemy}://${var.db_username}:${var.db_password}@${aws_db_instance.postgresdb.endpoint}/${var.db_name}"
+      "TARGET_DB"   = "${var.db_engine_sqlalchemy}://${var.db_username}:${var.db_password}@${aws_db_instance.postgresdb.endpoint}/${var.db_name}"
       "BUCKET_NAME" = "${aws_s3_bucket.data.bucket}"
-      "OBJECT_KEY" = "data.sqlite"
+      "OBJECT_KEY"  = "data.sqlite"
     }
   }
 }
@@ -30,7 +30,7 @@ resource "aws_lambda_function" "api-db" {
   timeout      = 45
   vpc_config {
     security_group_ids = ["${aws_security_group.api-db-security-group.id}"]
-    subnet_ids         = [aws_subnet.private-subnet-az1.id, aws_subnet.private-subnet-az2.id]
+    subnet_ids         = aws_subnet.private_subnets[*].id
   }
   function_name = "api_db"
   role          = var.lab_role

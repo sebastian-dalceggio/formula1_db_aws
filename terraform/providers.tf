@@ -1,3 +1,16 @@
+terraform {
+  required_providers {
+    docker = {
+      source  = "kreuzwerker/docker"
+      version = "2.16.0"
+    }
+    aws = {
+      source  = "hashicorp/aws"
+      version = "4.19.0"
+    }
+  }
+}
+
 provider "aws" {
   shared_credentials_files = ["~/.aws/credentials"]
   shared_config_files      = ["~/.aws/config"]

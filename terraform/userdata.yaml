@@ -1,0 +1,9 @@
+#cloud-config
+packages:
+  - ca-certificates
+  - curl
+  - gnupg
+  - postgresql-client-common
+  - postgresql-client-12
+  - lsb-release
+  - docker-compose

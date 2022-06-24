@@ -69,10 +69,10 @@ EOF
 }
 
 resource "aws_vpc_endpoint" "api-endpoint" {
-  vpc_id              = aws_vpc.vpc-main.id
+  vpc_id              = aws_vpc.vpc_main.id
   service_name        = "com.amazonaws.${var.region}.execute-api"
   security_group_ids  = [aws_security_group.http-security-group.id]
   vpc_endpoint_type   = "Interface"
   private_dns_enabled = true
-  subnet_ids          = [aws_subnet.public-subnet-az1.id, aws_subnet.public-subnet-az2.id]
+  subnet_ids          = aws_subnet.public_subnets[*].id
 }

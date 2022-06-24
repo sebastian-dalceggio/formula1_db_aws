@@ -1,7 +1,7 @@
 resource "aws_security_group" "ssh-security-group" {
   name        = "SSH Access"
   description = "Enable SSH access on Port 22"
-  vpc_id      = aws_vpc.vpc-main.id
+  vpc_id      = aws_vpc.vpc_main.id
 
   ingress {
     cidr_blocks = ["0.0.0.0/0"]
@@ -27,10 +27,10 @@ resource "aws_security_group" "ssh-security-group" {
 resource "aws_security_group" "http-security-group" {
   name        = "HTTP/HTTPS Access"
   description = "Enable HTTP/HTTPS access on Port 80/443"
-  vpc_id      = aws_vpc.vpc-main.id
+  vpc_id      = aws_vpc.vpc_main.id
 
   ingress {
-    cidr_blocks = ["10.0.0.0/16"]
+    cidr_blocks = [var.vpc_cidr_block]
     description = "HTTPS access"
     from_port   = 443
     protocol    = "tcp"
@@ -38,7 +38,7 @@ resource "aws_security_group" "http-security-group" {
   }
 
   ingress {
-    cidr_blocks = ["10.0.0.0/16"]
+    cidr_blocks = [var.vpc_cidr_block]
     description = "HTTP access"
     from_port   = 80
     protocol    = "tcp"
@@ -46,7 +46,7 @@ resource "aws_security_group" "http-security-group" {
   }
 
   egress {
-    cidr_blocks = ["10.0.0.0/16"]
+    cidr_blocks = [var.vpc_cidr_block]
     from_port   = 0
     protocol    = "-1"
     to_port     = 0
@@ -61,10 +61,10 @@ resource "aws_security_group" "http-security-group" {
 resource "aws_security_group" "database-security-group" {
   name        = "Database Security Group"
   description = "Enable Postgresql access on Port 5432"
-  vpc_id      = aws_vpc.vpc-main.id
+  vpc_id      = aws_vpc.vpc_main.id
 
   ingress {
-    cidr_blocks = ["10.0.0.0/16"]
+    cidr_blocks = [var.vpc_cidr_block]
     description = "Postgresql access"
     from_port   = 5432
     protocol    = "tcp"
@@ -72,7 +72,7 @@ resource "aws_security_group" "database-security-group" {
   }
 
   egress {
-    cidr_blocks = ["10.0.0.0/16"]
+    cidr_blocks = [var.vpc_cidr_block]
     from_port   = 0
     protocol    = "-1"
     to_port     = 0
@@ -86,7 +86,7 @@ resource "aws_security_group" "database-security-group" {
 resource "aws_security_group" "lambda-security-group" {
   name        = "Lambda Security Group"
   description = "Enable all access"
-  vpc_id      = aws_vpc.vpc-main.id
+  vpc_id      = aws_vpc.vpc_main.id
 
   egress {
     cidr_blocks = ["0.0.0.0/0"]
@@ -103,10 +103,10 @@ resource "aws_security_group" "lambda-security-group" {
 resource "aws_security_group" "api-db-security-group" {
   name        = "Api-db Security Group"
   description = "Enable all access"
-  vpc_id      = aws_vpc.vpc-main.id
+  vpc_id      = aws_vpc.vpc_main.id
 
   egress {
-    cidr_blocks = ["10.0.0.0/16"]
+    cidr_blocks = [var.vpc_cidr_block]
     from_port   = 0
     protocol    = "-1"
     to_port     = 0
