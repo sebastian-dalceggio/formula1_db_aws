@@ -1,4 +1,4 @@
-resource "aws_security_group" "ssh-security-group" {
+resource "aws_security_group" "ssh_security_group" {
   name        = "SSH Access"
   description = "Enable SSH access on Port 22"
   vpc_id      = aws_vpc.vpc_main.id
@@ -24,7 +24,7 @@ resource "aws_security_group" "ssh-security-group" {
 
 }
 
-resource "aws_security_group" "http-security-group" {
+resource "aws_security_group" "http_security_group" {
   name        = "HTTP/HTTPS Access"
   description = "Enable HTTP/HTTPS access on Port 80/443"
   vpc_id      = aws_vpc.vpc_main.id
@@ -58,7 +58,7 @@ resource "aws_security_group" "http-security-group" {
 
 }
 
-resource "aws_security_group" "database-security-group" {
+resource "aws_security_group" "database_security_group" {
   name        = "Database Security Group"
   description = "Enable Postgresql access on Port 5432"
   vpc_id      = aws_vpc.vpc_main.id
@@ -83,7 +83,7 @@ resource "aws_security_group" "database-security-group" {
   }
 }
 
-resource "aws_security_group" "lambda-security-group" {
+resource "aws_security_group" "lambda_security_group" {
   name        = "Lambda Security Group"
   description = "Enable all access"
   vpc_id      = aws_vpc.vpc_main.id
@@ -100,8 +100,8 @@ resource "aws_security_group" "lambda-security-group" {
   }
 }
 
-resource "aws_security_group" "api-db-security-group" {
-  name        = "Api-db Security Group"
+resource "aws_security_group" "api_db_security_group" {
+  name        = "Api_db Security Group"
   description = "Enable all access"
   vpc_id      = aws_vpc.vpc_main.id
 
@@ -113,6 +113,6 @@ resource "aws_security_group" "api-db-security-group" {
   }
 
   tags = {
-    Name = "Api-db Security Group"
+    Name = "Api_db Security Group"
   }
 }

@@ -9,9 +9,6 @@ owd = os.getcwd()
 
 def lambda_handler(event, context):
 
-    with open("create_tables.sql", "r") as query_file:
-        query = query_file.read()
-
     with open("tables.json", "r") as f:
         tables = json.load(f)
 
@@ -46,7 +43,6 @@ def lambda_handler(event, context):
     os.chdir("/tmp")
 
     loader = LoadData(target_db, origin_db)
-    loader.execute_sql(query)
     loader.load_data(tables)
     loader.dispose()
 

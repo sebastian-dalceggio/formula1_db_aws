@@ -44,3 +44,7 @@ class Database():
         with self.engine.connect() as con:
             con = self.engine.connect()
             con.execute(query)
+    
+    @retry(tries=TRIES, time_sleep=TIME_SLEEP)
+    def delete_rows(self, table_name):
+        self.execute_sql(f"TRUNCATE {table_name} CASCADE;")

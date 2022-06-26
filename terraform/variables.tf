@@ -43,6 +43,11 @@ variable "db_engine_sqlalchemy" {
   type    = string
 }
 
+variable "create_tables_tag" {
+  default = "1.0"
+  type    = string
+}
+
 variable "load_data_tag" {
   default = "1.0"
   type    = string

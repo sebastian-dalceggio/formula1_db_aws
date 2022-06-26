@@ -1,9 +1,11 @@
 terraform/terraform.tfstate
 terraform/terraform.tfstate.backup
 terraform/.terraform.lock.hcl
+terraform/.terraform.tfstate.lock.info
 terraform/.terraform/
 terraform/load_data.zip
 terraform/roles.tf
+create_tables/classes/__pycache__
 load_data/classes/__pycache__
 api/classes/__pycache__
 out.txt

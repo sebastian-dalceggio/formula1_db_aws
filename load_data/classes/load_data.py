@@ -44,6 +44,7 @@ class LoadData():
                     
             data.replace("", None, inplace=True)
             self.destination.wait_table(table_name)
+            self.destination.delete_rows(table_name)
             self.destination.load_data(data, table_name)
     
     def execute_sql(self, query):
