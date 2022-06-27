@@ -5,9 +5,7 @@ terraform/.terraform.tfstate.lock.info
 terraform/.terraform/
 terraform/load_data.zip
 terraform/roles.tf
-create_tables/classes/__pycache__
-load_data/classes/__pycache__
-api/classes/__pycache__
 out.txt
 .gitignore
 help.txt
+scripts/classes/__pycache__
